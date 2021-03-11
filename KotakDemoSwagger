@@ -1,0 +1,164 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "MF_SIPOrder.application"
+  },
+  "host" : "65.0.228.142:11881",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/mf/sips" : {
+      "get" : {
+        "tags" : [ "SIPOrder" ],
+        "summary" : "getSIPOrder",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "orderID",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Sample Description",
+            "schema" : {
+              "$ref" : "#/definitions/SIPOrderGetResponseElement"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "SIPOrder" ],
+        "summary" : "postSIPOrder",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "SPIOrderPostRequestElement",
+          "description" : "Sample Description",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SPIOrderPostRequestElement"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Sample Description",
+            "schema" : {
+              "$ref" : "#/definitions/SIPOrderPostResponseElement"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "SPIOrderPostRequestElement" : {
+      "type" : "object",
+      "properties" : {
+        "tradingsymbol" : {
+          "type" : "string"
+        },
+        "frequency" : {
+          "type" : "string"
+        },
+        "instalment_day" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "instalments" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "initial_amount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "amount" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "SIPOrderPostResponseElement" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "object",
+          "properties" : {
+            "sip_id" : {
+              "type" : "string"
+            },
+            "order_id" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "SIPOrderGetResponseElement" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "object",
+          "properties" : {
+            "dividend_type" : {
+              "type" : "string"
+            },
+            "pending_instalments" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "created" : {
+              "type" : "string"
+            },
+            "last_instalment" : {
+              "type" : "string"
+            },
+            "transaction_type" : {
+              "type" : "string"
+            },
+            "frequency" : {
+              "type" : "string"
+            },
+            "instalment_day" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "fund" : {
+              "type" : "string"
+            },
+            "sip_id" : {
+              "type" : "string"
+            },
+            "tradingsymbol" : {
+              "type" : "string"
+            },
+            "tag" : {
+              "type" : "string"
+            },
+            "instalment_amount" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "instalments" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "status" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
